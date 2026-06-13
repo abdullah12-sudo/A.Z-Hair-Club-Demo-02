@@ -1,0 +1,167 @@
+@import url("https://api.fontshare.com/v2/css?f[]=clash-display@600,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap");
+@import "tailwindcss";
+
+:root {
+  --az-black: #050505;
+  --az-charcoal: #101010;
+  --az-gold: #c6a152;
+  --az-gold-soft: #f1d58f;
+  --az-beige: #f5efe3;
+  --font-display: "Clash Display", "Montserrat", system-ui, sans-serif;
+  --font-body: "Poppins", -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--az-black);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--az-black);
+  color: #fff;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: var(--az-gold);
+  color: #050505;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.glass-nav {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(135deg, rgba(6, 6, 6, 0.76), rgba(16, 16, 16, 0.48));
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.34);
+  backdrop-filter: blur(24px) saturate(150%);
+}
+
+.premium-panel {
+  position: relative;
+  border: 1px solid transparent;
+  background:
+    linear-gradient(145deg, rgba(18, 18, 18, 0.88), rgba(5, 5, 5, 0.74)) padding-box,
+    linear-gradient(135deg, rgba(198, 161, 82, 0.72), rgba(255, 255, 255, 0.08), rgba(198, 161, 82, 0.18)) border-box;
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(22px) saturate(145%);
+}
+
+.sheen {
+  overflow: hidden;
+}
+
+.sheen::before {
+  position: absolute;
+  inset: -50% auto auto -70%;
+  width: 55%;
+  height: 220%;
+  content: "";
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+  transform: rotate(18deg);
+  transition: transform 0.85s ease;
+}
+
+.sheen:hover::before {
+  transform: translateX(360%) rotate(18deg);
+}
+
+.hero-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.86), transparent 24%, rgba(0, 0, 0, 0.92)),
+    radial-gradient(circle at center, transparent 42%, rgba(0, 0, 0, 0.82));
+}
+
+.aurora {
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(198, 161, 82, 0.42), rgba(198, 161, 82, 0.08) 42%, transparent 68%);
+  filter: blur(18px);
+  animation: floatGlow 8s ease-in-out infinite alternate;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, 34px, 0) scale(0.985);
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.compare-range {
+  accent-color: var(--az-gold);
+}
+
+.masonry-grid {
+  column-count: 1;
+  column-gap: 1.25rem;
+}
+
+.masonry-item {
+  break-inside: avoid;
+}
+
+@media (min-width: 640px) {
+  .masonry-grid {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .masonry-grid {
+    column-count: 3;
+  }
+}
+
+@keyframes floatGlow {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(-6%, 5%, 0) scale(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
